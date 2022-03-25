@@ -17,4 +17,4 @@ const Loading = () => {
     </Spinner>
   );
 };
-export default Spinner;
+export default Loading;
