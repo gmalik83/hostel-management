@@ -1,25 +1,48 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import HomeView from '../src/screens/homeView';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Container } from 'react-bootstrap';
+import Header from './components/header';
+import Footer from './components/footer';
+import AddStudentView from './screens/addStudentView';
+import AnalysisView from './screens/analysisView';
+import LoginView from './screens/Authentication Screens/LoginView';
+import RegisterView from './screens/Authentication Screens/RegisterView';
+import StudentDetailsView from './screens/studentDetailsView';
+import AttendenceView from './screens/attendenceView';
+import ProfileView from './screens/profileView';
+import UserListView from './screens/userListView';
+import UserEditView from './screens/userEditView';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Header />
+      <main className="py-3">
+        <Container>
+          <Route path="/user/:userId/edit" component={UserEditView} />
+          <Route path="/userList" component={UserListView} />
+          <Route path="/profile" component={ProfileView} />
+          <Route path="/attendence" component={AttendenceView} />
+          <Route path="/analysis" component={AnalysisView} />
+          <Route path="/addStudent" component={AddStudentView} />
+          <Route path="/student/edit/:id" component={AddStudentView} exact />
+          <Route path="/student/:id" component={StudentDetailsView} exact />
+          <Route path="/login" component={LoginView} exact />
+          <Route path="/register" component={RegisterView} exact />
+          <Route path="/search/:keyword" component={HomeView} exact />
+          <Route path="/page/:pageNumber" component={HomeView} exact />
+          <Route
+            path="/search/:keyword/page/:pageNumber"
+            component={HomeView}
+            exact
+          />
+          <Route path="/" component={HomeView} exact />
+        </Container>
+      </main>
+      <Footer></Footer>
+    </Router>
   );
-}
+};
 
 export default App;
