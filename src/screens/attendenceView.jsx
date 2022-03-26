@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
-import { getStudentByRoomNo as action } from '../actions/studentActions';
+import { getStudentsByRoomNo } from '../actions/studentActions';
 import AttendenceTable from '../components/attendenceTable';
 
 const AttendenceView = () => {
@@ -12,7 +12,7 @@ const AttendenceView = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(action(roomNo));
+    dispatch(getStudentsByRoomNo(roomNo));
   };
 
   const changeRoomNo = (e) => {
