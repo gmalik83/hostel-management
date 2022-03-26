@@ -42,7 +42,7 @@ const AttendenceTable = ({ roomNo }) => {
 
   return (
     <>
-      {error && <Message variant="danger">{erroe}</Message>}
+      {error && <Message variant="danger">{error}</Message>}
       {loading || loadingAttendence ? (
         <Loading />
       ) : (
